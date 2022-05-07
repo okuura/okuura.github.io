@@ -24,7 +24,7 @@ function init() {
 
     // Load GLTF or GLB
     const loader = new THREE.GLTFLoader();
-    const url = 'http://okuura.github.io/building.glb';
+    const url = 'https://okuura.github.io/building.glb';
 
     let model = null;
     loader.load(
