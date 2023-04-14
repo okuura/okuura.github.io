@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>商品説明ページ</title>
+	<meta charset="UTF-8">
+	<style>
+		/* スライドショー用のスタイル */
+		.slideshow-container {
+			max-width: 500px;
+			position: relative;
+			margin: auto;
+		}
+		.mySlides {
+			display: none;
+			width: 100%;
+			height: auto;
+		}
+		.prev, .next {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			padding: 16px;
+			color: white;
+			font-weight: bold;
+			font-size: 20px;
+			transition: 0.6s ease;
+			border-radius: 0 3px 3px 0;
+			user-select: none;
+		}
+		.next {
+			right: 0;
+			border-radius: 3px 0 0 3px;
+		}
+		.prev:hover, .next:hover {
+			background-color: rgba(0,0,0,0.8);
+		}
+		.text {
+			color: #f2f2f2;
+			font-size: 18px;
+			padding: 8px 12px;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			text-align: center;
+		}
+		.dot-container {
+			display: flex;
+			justify-content: center;
+			margin-top: 20px;
+		}
+		.dot {
+			cursor: pointer;
+			height: 15px;
+			width: 15px;
+			margin: 0 5px;
+			background-color: #bbb;
+			border-radius: 50%;
+			display: inline-block;
+			transition: background-color 0.6s ease;
+		}
+		.active, .dot:hover {
+			background-color: #717171;
+		}
+	</style>
+</head>
+<body>
+	<h1>商品名</h1>
+	<div class="slideshow-container">
+		<!-- 画像スライドショー -->
+		<div class="mySlides fade">
+			<img src="image1.png" alt="画像1">
+			<div class="text">画像1の説明文</div>
+		</div>
+		<div class="mySlides fade">
+			<img src="image2.png" alt="画像2">
+			<div class="text">画像2の説明文</div>
+		</div>
+		<div class="mySlides fade">
+			<img src="image3.png" alt="画像3">
+			<div class="text">画像3の説明文</div>
+		</div>
+		<!-- 前へ・次へボタン -->
+		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+		<a class="next" onclick="plusSlides(1)">&#10095;</a>
+	</div>
+	<br>
+	<!-- ドットボタン -->
+	<div style="text-align:center">
+		<span class="dot" onclick="currentSlide(1)"></span>
+   		<span class="dot" onclick="currentSlide(2)"></span>
+		<span class="dot" onclick="currentSlide(3)"></span>
+	</div>
+	
+	<script>
+		var slideIndex = 1;
+		showSlides(slideIndex);
+		
+		// Next/previous controls
+		function plusSlides(n) {
+			showSlides(slideIndex += n);
+		}
+		
+		// Thumbnail image controls
+		function currentSlide(n) {
+			showSlides(slideIndex = n);
+		}
+		
+		function showSlides(n) {
+			var i;
+			var slides = document.getElementsByClassName("mySlides");
+			var dots = document.getElementsByClassName("dot");
+			if (n > slides.length) {
+				slideIndex = 1;
+			}
+			if (n < 1) {
+				slideIndex = slides.length;
+			}
+			for (i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";
+			}
+			for (i = 0; i < dots.length; i++) {
+				dots[i].className = dots[i].className.replace(" active", "");
+			}
+			slides[slideIndex-1].style.display = "block";
+			dots[slideIndex-1].className += " active";
+		}
+	</script>
+	
+	<p>商品の詳細説明文</p>
+	
+</body>
+</html>
